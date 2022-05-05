@@ -20,7 +20,8 @@ class Pokemon_Info():
         for i in range(len(self.request['abilities'])):
             self.ability.append(
                 self.request['abilities'][i]['ability']['name'].title())
-        self.type = self.request['types'][0]['type']['name'].title()
+        for i in range(len(self.request['types'])):
+            self.type.append(self.request['types'][i]['type']['name'].title())
         self.info = {'Name': self.name, 'Type': self.type,
                      'Abilities': self.ability, 'Wegiht': self.weight}
 
@@ -41,7 +42,7 @@ class Pokedex_info():
             poke_card.sort_poke()
             poke_card.poke_info()
             self.pokedexlib.append(poke_card.poke_info())
-        print(*self.pokedexlib, sep='\n')
+            print(f'{poke_card.poke_info()["Name"]} | {" / ".join(poke_card.poke_info()["Type"])} Type | Abilities: {", ".join(poke_card.poke_info()["Ability"])} | {int((poke_card.poke_info()["Weight"]/10)*2.20462)} lbs')
 
 
 def run():
