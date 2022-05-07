@@ -41,7 +41,6 @@ class Pokedex_info():
             poke_card.sort_poke()
             poke_card.poke_info()
             self.pokedexlib.append(poke_card.poke_info())
-#            print(f'{poke_card.poke_info()["Name"]} | {" / ".join(poke_card.poke_info()["Type"])} Type | Abilities: {", ".join(poke_card.poke_info()["Ability"])} | {int((poke_card.poke_info()["Weight"]/10)*2.20462)} lbs')
 
     def ui(self):
         print(f'\nWelcome to Yasir\'s Pokemon Adoption Center')
@@ -67,7 +66,8 @@ class Pokedex_info():
                         "\nTeam Builder Menu:\n[1] Add Pokemon to team\n[2] Remove Pokemon from team\n[3] View Pokemon team\n[4] Quit\nChoose An Option By Simply Typing The Number Below.\n")
                     if x == '1':
                         if len(self.currentteam) == 4:
-                            print(f'Sorry you have to many Pokemon on your team.\nThe team max is 4 Pokemons, If you would like to add a new pokemon\nPlease remove one from your team first.')
+                            print(
+                                f'Sorry you have to many Pokemon on your team.\nThe team max is 4 Pokemons, If you would like to add a new pokemon\nPlease remove one from your team first.')
                             break
                         y = input(
                             f'Which Pokemon would you like to add to your team?:\n').title()
@@ -79,35 +79,39 @@ class Pokedex_info():
                             print(f'Invalid Input. That Pokemon does not exist.')
                     elif x == '2':
                         if self.currentteam == []:
-                            print(f'Your current team is empty.\nReturning to Team Builder Meni')
+                            print(
+                                f'Your current team is empty.\nReturning to Team Builder Meni')
                         else:
-                            print(f'This is your current team {", ".join(self.currentteam)}')
+                            print(
+                                f'This is your current team {", ".join(self.currentteam)}')
                             y = (f'Which Pokemon would you like to remove?:\n')
                             if y in self.currentteam:
                                 self.currentteam.remove(y)
                             else:
-                                print(f'Invalid Input.That Pokemon is not in your team!')
+                                print(
+                                    f'Invalid Input.That Pokemon is not in your team!')
                     elif x == '3':
                         if self.currentteam != []:
-                            print (f'This is your current team:\n{", ".join(self.currentteam)}')
+                            print(
+                                f'This is your current team:\n{", ".join(self.currentteam)}')
                     elif x == '4':
                         break
             elif x == '3':
                 namelist = [x['Name'] for x in self.pokedexlib]
-                y = input(f'\nTo view a Pokemons basic info,\nPlease enter the name below:\n').title()
+                y = input(
+                    f'\nTo view a Pokemons basic info,\nPlease enter the name below:\n').title()
                 if y in namelist:
                     for x in self.pokedexlib:
                         if x['Name'] == y:
                             card = x
-                            print(f"\n{card['Name']} | {' / '.join(card['Type'])} Type | Abilities: {', '.join(card['Ability'])} | {int(card['Weight']*.220462)} lbs")
+                            print(
+                                f"\n{card['Name']} | {' / '.join(card['Type'])} Type | Abilities: {', '.join(card['Ability'])} | {int(card['Weight']*.220462)} lbs")
                 else:
-                    print(f'Invalid Input. We do not have that Pokemon or it does not exist.')
-            elif  x =='4':
+                    print(
+                        f'Invalid Input. We do not have that Pokemon or it does not exist.')
+            elif x == '4':
                 print(f'Thanks for visiting have a nice day!')
                 return False
-
-
-
 
 
 def run():
